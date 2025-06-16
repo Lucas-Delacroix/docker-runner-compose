@@ -1,6 +1,5 @@
 services:
   github-runner:
-    container_name: github-runner
     restart: unless-stopped
     image: myoung34/github-runner:latest  
     volumes:

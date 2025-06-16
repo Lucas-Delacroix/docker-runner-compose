@@ -1,0 +1,17 @@
+services:
+  github-runner:
+    container_name: github-runner
+    restart: unless-stopped
+    image: myoung34/github-runner:latest  
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/github-runner:/tmp/github-runner
+      - /tmp/github-runner/_work:/github/workflow:ro
+    environment:
+      - RUNNER_NAME=${RUNNER_NAME}
+      - ACCESS_TOKEN=${ACCESS_TOKEN}
+      - REPO_URL=${REPO_URL}
+      - LABELS=${LABELS}
+    logging:
+      options:
+        max-size: 10m
